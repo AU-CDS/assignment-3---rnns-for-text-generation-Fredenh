@@ -32,11 +32,19 @@ The data used for this assignment is the [New York Times Comments dataset](https
 # Packages
 * ```os``` is used for navigating paths
 * ```pandas``` is used to read the CSV into a pd object
-* ```numpy``` is used to set a random seed as well as shuffling the subset of data used for training
+* ```numPy``` is used to set a random seed as well as shuffling the subset of data used for training
 * ```tensorflow``` is used for tokenizing and model training 
 * ```warnings``` is used to suprress warnings
-* ```sys``` is used to navigate the directories and help importing the functions from the _requirements_functions.py_ script in _utils_
+* ```sys``` is used to navigate the directories and helps importing the functions from the _requirements_functions.py_ script in _utils_
 * ```zipfile``` is used to unzip the data 
 
 # Methods 
+There are two scripts in the submission for this assignment. The first one i will describe is the _train_model.py_ script. The script starts by unzipping the data into the _data_ folder and loads it into the scripts afterwards. Then a for loop iterates through everything in the _news_data_ folder and selects only the CSV's containing the comments. Then a sample size of 1000 comments is selected and randomized using ```numPy``` before it is cleaned so that intergers are omitted. Then the data is tokenized using ```Tokenizer()``` from ```TensorFlow```. Then a model is trained on the data with the help of the ```rf.create_model()``` function from the _requirements_functions.py_ script. Then the model is saved to the folder called _models_ via the documentation from this [link](https://www.tensorflow.org/api_docs/python/tf/keras/models/save_model). The script ends with a print statement that tests if the models has trained successfully using a preset prompt.
+The second script is the _text_gen.py_ script which lets the user generate text with a user-suggested promt. This is done via the ```argparse``` code presented in the script. It lets the user choose which prompt the text generator should use as well as the amount of words after the prompt. It also makes it possible to load a different trained model to generate text from. Then the script loads in the model, and proceeds to tokenize using the same principles as in the previous script. Then the script uses the ```rf.generate_text()``` function from the _requirements_functions.py_ script, which takes the ´´´argparse``` arguments mentioned before, and prints the result to the terminal.
+
+
+
+
+
+
 
