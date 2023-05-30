@@ -4,7 +4,7 @@
 This is the third of five assignments for the Language Analytics course
 
 # Contribution
-Initially, I sparred with my fellow students for this assignment. For the actual code itself, i took great inspiration from the notebooks that touched upon the concept of model training and text generation with ```tensorflow```. I also consulted the link provided further down in Ross' instructions when it came to saving a trained model. 
+Initially, I sparred with my fellow students for this assignment. For the actual code itself, i took great inspiration from the notebooks that touched upon the concept of model training and text generation with ```TensorFlow```. I also consulted the link provided further down in Ross' instructions when it came to saving a trained model. 
 
 # Ross' instructions
 Text generation is hot news right now!
