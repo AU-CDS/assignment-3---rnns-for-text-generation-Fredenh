@@ -18,7 +18,6 @@ import warnings
 warnings.filterwarnings("ignore")
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-
 def clean_text(txt):
     txt = "".join(v for v in txt if v not in string.punctuation).lower() # stripping all the punctuation and making it lowercase
     txt = txt.encode("utf8").decode("ascii",'ignore')
@@ -34,18 +33,18 @@ def get_sequence_of_tokens(tokenizer, corpus):
             input_sequences.append(n_gram_sequence)
     return input_sequences
 
-def generate_padded_sequences(input_sequences):
+def generate_padded_sequences(input_sequences, num_classes):
     # get the length of the longest sequence
     max_sequence_len = max([len(x) for x in input_sequences])
-    # make every sequence the length of the longest on
+    # make every sequence the length of the longest one
     input_sequences = np.array(pad_sequences(input_sequences, 
-                                            maxlen=max_sequence_len, 
-                                            padding='pre'))
+                                             maxlen=max_sequence_len, 
+                                             padding='pre'))
 
-    predictors, label = input_sequences[:,:-1],input_sequences[:,-1]
-    label = ku.to_categorical(label, 
-                            num_classes=total_words)
+    predictors, label = input_sequences[:, :-1], input_sequences[:, -1]
+    label = ku.to_categorical(label, num_classes=num_classes)
     return predictors, label, max_sequence_len
+
 
 def create_model(max_sequence_len, total_words):
     input_len = max_sequence_len - 1
@@ -69,7 +68,7 @@ def create_model(max_sequence_len, total_words):
     
     return model
 
-def generate_text(seed_text, next_words, model, max_sequence_len):
+def generate_text(seed_text, next_words, model, tokenizer, max_sequence_len):
     for _ in range(next_words): # x in
         token_list = tokenizer.texts_to_sequences([seed_text])[0]
         token_list = pad_sequences([token_list], 
