@@ -1,7 +1,10 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-8d59dc4de5201274e310e4c54b9627a8934c3b88527886e3b421487c677d23eb.svg)](https://classroom.github.com/a/5f7lMH9Y)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10587497&assignment_repo_type=AssignmentRepo)
 # Assignment 3 - Language modelling and text generation using RNNs
+This is the third of five assignments for the Language Analytics course
 
+# Contribution
+Initially, I sparred with my fellow students for this assignment. For the actual code itself, i took great inspiration from the notebooks that touched upon the concept of model training and text generation with ```TensorFlow```. I also consulted the link provided further down in Ross' instructions when it came to saving a trained model. 
+
+# Ross' instructions
 Text generation is hot news right now!
 
 For this assignemnt, you're going to create some scripts which will allow you to train a text generation model on some culturally significant data - comments on articles for *The New York Times*. You can find a link to the data [here](https://www.kaggle.com/datasets/aashita/nyt-comments).
@@ -21,19 +24,28 @@ Language modelling is hard and training text generation models is doubly hard. F
 - Illustrating that you can structure repositories appropriately
 - Providing clear, easy-to-use documentation for your work.
 
-## Some tips
+# Data
+The data used for this assignment is the [New York Times Comments dataset](https://www.kaggle.com/datasets/aashita/nyt-comments) provided by Kaggle user Aashita Keserwani: "The data contains information about the comments made on the articles published in New York Times in Jan-May 2017 and Jan-April 2018". The data comes as a zip file once downloaded. It will be unzipped from the pipeline within the _train_model.py_ script. 
 
-One big thing to be aware of - unlike the classroom notebook, this assignment is working on the *Comments*, not the articles. So two things to consider:
+# Packages
+* ```os``` is used for navigating paths
+* ```pandas``` is used to read the CSV into a pd object
+* ```numPy``` is used to set a random seed as well as shuffling the subset of data used for training
+* ```tensorflow``` is used for tokenizing and model training 
+* ```warnings``` is used to suprress warnings
+* ```sys``` is used to navigate the directories and helps importing the functions from the _requirements_functions.py_ script in _utils_
+* ```zipfile``` is used to unzip the data 
 
-1) The Comments data might be structured differently to the Articles data. You'll need to investigate that;
-2) There are considerably more Comments than articles - plan ahead for model training!
+# Methods 
+There are two scripts in the submission for this assignment. The first one i will describe is the _train_model.py_ script. The script starts by unzipping the data into the _data_ folder and loads it into the scripts afterwards. Then a for loop iterates through everything in the _news_data_ folder and selects only the CSV's containing the comments. Then a sample size of 1000 comments is selected and randomized using ```numPy``` before it is cleaned so that intergers are omitted. Then the data is tokenized using ```Tokenizer()``` from ```TensorFlow```. Then a model is trained on the data with the help of the ```rf.create_model()``` function from the _requirements_functions.py_ script. Then the model is saved to the folder called _models_ via the documentation from this [link](https://www.tensorflow.org/api_docs/python/tf/keras/models/save_model). The script ends with a print statement that tests if the models has trained successfully using a preset prompt.
+The second script is the _text_gen.py_ script which lets the user generate text with a user-suggested promt. This is done via the ```argparse``` code presented in the script. It lets the user choose which prompt the text generator should use as well as the amount of words after the prompt. It also makes it possible to load a different trained model to generate text from. Then the script loads in the model, and proceeds to tokenize using the same principles as in the previous script. Then the script uses the ```rf.generate_text()``` function from the _requirements_functions.py_ script, which takes the ´´´argparse´´´ arguments mentioned before, and prints the result to the terminal.
 
-## Additional pointers
+# Discussion of results
+The text that is generated based on the model that is trained with a randomized subset of the data performs decently. However, it is clear that it isnt conistent in terms of gramatical profieciency. The text is often ungrammatical but still understandable. This is due to the fact that the words printed often have a semantic meaning that is quite close to each other. By fiddling around with it for a while, i figured out that by adding politicians as prompts, the output is also politically discussed topics. For instance, "Hillary Clinton" gives "MeToo" as one of the output words. Considering the time the data was gathered, this makes good sense
 
-- Make sure not to try to push the data to Github!
-- *Do* include the saved models that you output
-- Make sure to structure your repository appropriately
-  - Include a readme explaining relevant info
-    - E.g where does the data come from?
-    - How do I run the code?
-- Make sure to include a requirements file, etc...
+# Usage
+* Firstly, the data needs to be downloaded from the following Kaggle [link](https://www.kaggle.com/datasets/aashita/nyt-comments) and has to placed in the _news_data_ folder which is inside the _data_ folder.
+* 
+
+
+
