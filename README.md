@@ -45,7 +45,11 @@ The text that is generated based on the model that is trained with a randomized 
 
 # Usage
 * Firstly, the data needs to be downloaded from the following Kaggle [link](https://www.kaggle.com/datasets/aashita/nyt-comments) and has to placed in the _news_data_ folder which is inside the _data_ folder.
-* 
+* The you run ```bash setup.sh``` from the command line. This installs requirements and creates a virtual environment.
+* Then run ```source ./assignment3_env/bin/activate``` to activate the virtual environment
+* Then run ```python3 src/train_model.py```. It is important that this script is run first since it trains the model that will be loaded in the other script. It also unzips the data to the correct folder
+* Then run ```python3 src/text_gen.py --seed_text "obama" --next_words 10```. I have exemplified how you can run it with the parsed arguments to the command line of "obama" and my choice of 10 words after seed word. Feel free to change it when running it. The path to the model is set as default.
+* the output of the text generator will show in the terminal
 
 
 
