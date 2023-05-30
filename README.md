@@ -4,6 +4,9 @@
 This is the third of five assignments for the Language Analytics course
 
 # Contribution
+Initially, I sparred with my fellow students for this assignment. For the actual code itself, i took great inspiration from the notebooks that touched upon the concept of model training and text generation with ```tensorflow```. I also consulted the link provided further down in Ross' instructions when it came to saving a trained model. 
+
+# Ross' instructions
 Text generation is hot news right now!
 
 For this assignemnt, you're going to create some scripts which will allow you to train a text generation model on some culturally significant data - comments on articles for *The New York Times*. You can find a link to the data [here](https://www.kaggle.com/datasets/aashita/nyt-comments).
@@ -23,9 +26,16 @@ Language modelling is hard and training text generation models is doubly hard. F
 - Illustrating that you can structure repositories appropriately
 - Providing clear, easy-to-use documentation for your work.
 
-## Some tips
+# Data
+The data used for this assignment is the [New York Times Comments dataset](https://www.kaggle.com/datasets/aashita/nyt-comments) provided by Kaggle user Aashita Keserwani: "The data contains information about the comments made on the articles published in New York Times in Jan-May 2017 and Jan-April 2018". The data comes as a zip file once downloaded. It will be unzipped from the pipeline within the _train_model.py_ script. 
 
-One big thing to be aware of - unlike the classroom notebook, this assignment is working on the *Comments*, not the articles. So two things to consider:
+# Packages
+* ```os``` is used for navigating paths
+* ```pandas``` is used to read the CSV into a pd object
+* ```numpy``` is used to set a random seed as well as shuffling the subset of data used for training
+* ```tensorflow``` is used for tokenizing and model training 
+* ```warnings``` is used to suprress warnings
+* ```sys``` is used to navigate the directories and help importing the functions from the _requirements_functions.py_ script in _utils_
+* ```zipfile``` is used to unzip the data 
 
-1) The Comments data might be structured differently to the Articles data. You'll need to investigate that;
-2) There are considerably more Comments than articles - plan ahead for model training!
+# Methods 
