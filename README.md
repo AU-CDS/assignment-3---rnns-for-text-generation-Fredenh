@@ -44,7 +44,7 @@ The second script is the _text_gen.py_ script which lets the user generate text 
 The text that is generated based on the model that is trained with a randomized subset of the data performs decently. However, it is clear that it isnt conistent in terms of gramatical profieciency. The text is often ungrammatical but still understandable. This is due to the fact that the words printed often have a semantic meaning that is quite close to each other. By fiddling around with it for a while, i figured out that by adding politicians as prompts, the output is also politically discussed topics. For instance, "Hillary Clinton" gives "MeToo" as one of the output words. Considering the time the data was gathered, this makes good sense
 
 # Usage
-* Firstly, the data needs to be downloaded from the following Kaggle [link](https://www.kaggle.com/datasets/aashita/nyt-comments) and has to placed in the _news_data_ folder which is inside the _data_ folder.
+* Firstly, the data needs to be downloaded from the following Kaggle [link](https://www.kaggle.com/datasets/aashita/nyt-comments) and has to be placed in the _news_data_ folder which is inside the _data_ folder.
 * The you run ```bash setup.sh``` from the command line. This installs requirements and creates a virtual environment.
 * Then run ```source ./assignment3_env/bin/activate``` to activate the virtual environment
 * Then run ```python3 src/train_model.py```. It is important that this script is run first since it trains the model that will be loaded in the other script. It also unzips the data to the correct folder
