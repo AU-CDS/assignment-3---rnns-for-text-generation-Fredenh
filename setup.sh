@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Creating virtual environment 
-python3 -m venv assignment2_env
+python3 -m venv assignment3_env
 
 # Installing packages
 python3 -m pip install --upgrade pip
